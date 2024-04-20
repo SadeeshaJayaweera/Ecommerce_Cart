@@ -7,6 +7,34 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/adminMain.css">
 <title>AddNewProducts</title>
+<style>
+    /* Custom CSS for admin user management table */
+
+.custom-table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* White background for the table */
+}
+
+.custom-table th {
+    font-weight: 600;
+    background-color: #f8f9fa; /* Light gray background for table header */
+}
+
+.custom-table td, .custom-table th {
+    vertical-align: middle !important;
+}
+
+.custom-table .btn {
+    transition: all 0.3s ease;
+}
+
+.custom-table .btn:hover {
+    transform: scale(1.1);
+}
+
+</style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,6 +61,55 @@
     </div>
   </div>
 </nav>
+
+<div class="container-fluid bg-dark text-light py-5">
+    <div class="container">
+        <h2 class="mb-4 row justify-content-center">ADMIN USER MANAGEMENT </h2> 
+        <table class="table table-striped custom-table">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+                <!-- Add more rows for other users -->
+            </tbody>
+        </table>
+    </div>
+</div>
 
 </body>
 </html>
