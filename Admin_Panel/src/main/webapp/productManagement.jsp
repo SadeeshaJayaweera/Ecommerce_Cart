@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="addnewProduct.jsp">Add New Products</a>
+          <a class="nav-link" aria-current="page" href="addNewProducts.jsp">Add New Products</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="userManagement.jsp">User Management</a>
