@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,25 +20,21 @@
               <h2 class="fw-bold mb-2">Admin Login</h2>
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
-              <div data-mdb-input-init class="form-outline form-white mb-4">
-                <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX">Email</label>
-              </div>
+              <form id="loginForm" action="adminMain.jsp" method="post"> <!-- Added form element -->
+                <div data-mdb-input-init class="form-outline form-white mb-4">
+                  <input type="email" id="typeEmailX" class="form-control form-control-lg" name="email" required />
+                  <label class="form-label" for="typeEmailX">Email</label>
+                </div>
 
-              <div data-mdb-input-init class="form-outline form-white mb-4">
-                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX">Password</label>
-              </div>
+                <div data-mdb-input-init class="form-outline form-white mb-4">
+                  <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" required />
+                  <label class="form-label" for="typePasswordX">Password</label>
+                </div>
 
-              
-
-              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
-
-              
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+              </form>
 
             </div>
-
-            
 
           </div>
         </div>
@@ -47,5 +42,17 @@
     </div>
   </div>
 </section>
+
+<script>
+  // JavaScript to handle form submission and redirection
+  document.getElementById("loginForm").addEventListener("submit", function(event) {
+    // Prevent default form submission
+    event.preventDefault();
+
+    // Redirect to adminMain.jsp page
+    window.location.href = "adminMain.jsp";
+  });
+</script>
+
 </body>
 </html>
