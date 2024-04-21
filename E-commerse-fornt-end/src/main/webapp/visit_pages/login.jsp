@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Shopping Cart Login</title>
-<%@ include file="../includes/head.jsp"%> <!-- Call a JSP file from the includes folder -->
+<%@ include file="../includes/header.jsp"%> <!-- Call a JSP file from the includes folder -->
 
 </head>
 <body>
