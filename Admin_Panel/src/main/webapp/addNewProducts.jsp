@@ -37,9 +37,9 @@
   <h2>Add New Product</h2>
   <form action="addProductServlet" method="post" enctype="multipart/form-data">
     <div class="mb-3">
-      <label for="productImage" class="form-label">Product Image</label>
-      <input type="file" class="form-control" id="productImage" name="productImage" required accept="image/*">
-    </div>
+  	  <label for="productImageLink" class="form-label">Enter Image Link</label>
+      <input type="text" class="form-control" id="productImageLink" name="productImageLink" placeholder="https://example.com/image.jpg">
+	</div>
     <div class="mb-3">
       <label for="productName" class="form-label">Product Name</label>
       <input type="text" class="form-control" id="productName" name="productName" required>
