@@ -3,11 +3,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
 <link rel="stylesheet" href="css/adminLogin.css">
 <title>Admin Login</title>
 </head>
 <body>
+
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -20,14 +21,16 @@
               <h2 class="fw-bold mb-2">Admin Login</h2>
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
-              <form id="loginForm" action="adminMain.jsp" method="post"> <!-- Added form element -->
+              <form  action="admin-login" method="post">
+  
+  <!-- Added form element -->
                 <div data-mdb-input-init class="form-outline form-white mb-4">
-                  <input type="email" id="typeEmailX" class="form-control form-control-lg" name="email" required />
+                  <input type="email" id="typeEmailX" class="form-control form-control-lg" name="login-email" required />
                   <label class="form-label" for="typeEmailX">Email</label>
                 </div>
 
                 <div data-mdb-input-init class="form-outline form-white mb-4">
-                  <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" required />
+                  <input type="password" id="typePasswordX" class="form-control form-control-lg" name="login-password" required />
                   <label class="form-label" for="typePasswordX">Password</label>
                 </div>
 
@@ -50,7 +53,7 @@
     event.preventDefault();
 
     // Redirect to adminMain.jsp page
-    window.location.href = "adminMain.jsp";
+    window.location.href = "LoginServlet.java";
   });
 </script>
 
