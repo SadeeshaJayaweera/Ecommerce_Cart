@@ -15,8 +15,13 @@ public class ProductDAO {
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "12345678";
 
+	private static final String INSERT_PRODUCT_SQL = "INSERT INTO products"
+			+ "  (name, image_link, price, category) VALUES " + " (?, ?, ?, ?);";
+
 	private static final String SELECT_PRODUCT_BY_ID = "SELECT id, name, image_link, price, category FROM products WHERE id = ?";
-	private static final String SELECT_ALL_PRODUCTS = "SELECT * FROM products";
+	private static final String SELECT_ALL_PRODUCTS = "SELECT * FROM products ORDER BY id DESC";
+	private static final String DELETE_PRODUCT_SQL = "DELETE FROM products WHERE id = ?";
+	private static final String UPDATE_PRODUCT_SQL = "UPDATE products SET name = ?, image_link = ?, price = ?, category = ? WHERE id = ?";
 
 	public ProductDAO() {
 	}
@@ -30,6 +35,19 @@ public class ProductDAO {
 			e.printStackTrace();
 		}
 		return connection;
+	}
+
+	public void insertProduct(Product product) throws SQLException {
+		try (Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCT_SQL)) {
+			preparedStatement.setString(1, product.getName());
+			preparedStatement.setString(2, product.getImageLink());
+			preparedStatement.setInt(3, product.getPrice());
+			preparedStatement.setString(4, product.getCategory());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
 	}
 
 	public Product selectProduct(int id) {
@@ -68,6 +86,30 @@ public class ProductDAO {
 			printSQLException(e);
 		}
 		return products;
+	}
+
+	public boolean deleteProduct(int id) throws SQLException {
+		boolean rowDeleted;
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(DELETE_PRODUCT_SQL)) {
+			statement.setInt(1, id);
+			rowDeleted = statement.executeUpdate() > 0;
+		}
+		return rowDeleted;
+	}
+
+	public boolean updateProduct(Product product) throws SQLException {
+		boolean rowUpdated;
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(UPDATE_PRODUCT_SQL)) {
+			statement.setString(1, product.getName());
+			statement.setString(2, product.getImageLink());
+			statement.setInt(3, product.getPrice());
+			statement.setString(4, product.getCategory());
+			statement.setInt(5, product.getId());
+			rowUpdated = statement.executeUpdate() > 0;
+		}
+		return rowUpdated;
 	}
 
 	private void printSQLException(SQLException ex) {

@@ -42,6 +42,13 @@ if(auth !=null){
     transform: scale(1.1);
 }
 
+  .nav-link:hover {
+    color: #007bff !important;}
+   .active {
+    color: #007bff !important;
+   }
+  }
+
 </style>
 </head>
 <body>
@@ -60,7 +67,7 @@ if(auth !=null){
       
        
         <li class="nav-item">
-          <a class="nav-link" href="userManagement.jsp">User Management</a>
+          <a class="nav-link active" href="userManagement.jsp">User Management</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="productManagement.jsp">Product Management</a>

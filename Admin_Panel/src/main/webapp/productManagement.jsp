@@ -24,6 +24,15 @@ if(auth !=null){
         height: 100px;
         object-fit: cover;
       }
+      
+    
+  .nav-link:hover {
+    color: #007bff !important;}
+   .active {
+    color: #007bff !important;
+   }
+  }
+
     </style>
 </head>
 <body>
@@ -45,7 +54,7 @@ if(auth !=null){
           <a class="nav-link" href="userManagement.jsp">User Management</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="productManagement.jsp">Product Management</a>
+          <a class="nav-link active" href="productManagement.jsp">Product Management</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="log-out">Log Out</a>
@@ -85,8 +94,8 @@ if(auth !=null){
         <td>$<%= product.getPrice() %></td>
         <td><%= product.getCategory() %></td>
         <td>
-        <a class="btn btn-warning">Edit</a>
-        <a class="btn btn-danger">Delete</a>
+        <a href="edit?id=<%= product.getId() %>" class="btn btn-warning">Edit</a>
+        <a href="delete?id=<%= product.getId() %>" class="btn btn-danger">Delete</a>
         
         
     </td>

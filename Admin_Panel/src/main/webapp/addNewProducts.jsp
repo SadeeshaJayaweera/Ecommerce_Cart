@@ -15,6 +15,14 @@ if(auth !=null){
 <title>Add New Product</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
 <link rel="stylesheet" type="text/css" href="css/adminMain.css">
+<style>
+  .nav-link:hover {
+    color: #007bff !important;}
+   .active {
+    color: #007bff !important;
+   }
+  }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

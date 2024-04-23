@@ -1,3 +1,6 @@
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,32 +28,39 @@
   </div>
 </nav>
 <div class="container mt-5">
-
-  
-  <form action="update" method="post" class="form-container">
-    <div class="mb-3">
-      <input type="hidden" class="form-control" id="productName" name="id" value="">
-    </div>
-    <div class="mb-3">
-      <h2>Edit Product</h2>
-      <label for="productName" class="form-label">Product Name</label>
-      <input type="text" class="form-control" id="productName" name="name" value="">
-    </div>
-    <div class="mb-3">
-      <label for="productPrice" class="form-label">Product Price</label>
-      <input type="text" class="form-control" id="productPrice" name="price" value="">
-    </div>
-    <div class="mb-3">
-      <label for="productCategory" class="form-label">Product Category</label>
-      <input type="text" class="form-control" id="productCategory" name="category" value="">
-    </div>
-    <div class="mb-3">
-      <label for="productCategory" class="form-label">Image Link</label>
-      <input type="text" class="form-control" id="productCategory" name="image_link" value="">
-    </div>
+  <div class="form-container">
+    <h2>Edit Product</h2>
+    <form action="update" method="post">
     
-    <button type="submit" class="btn btn-primary d-block mx-auto">Save</button> <!-- Center the button -->
-  </form>
+    <%@ page import="productManagement.model.Product" %>
+  <%@ page import="productManagement.dao.ProductDAO" %>
+  
+  <% 
+    // Retrieve product details based on the passed ID
+    int productId = Integer.parseInt(request.getParameter("id"));
+    ProductDAO productDAO = new ProductDAO();
+    Product product = productDAO.selectProduct(productId);
+  %>
+      <input type="hidden" name="id" value="<%= request.getParameter("id") %>">
+      <div class="mb-3">
+        <label for="productName" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="productName" name="name" value="<%= product.getName() %>">
+      </div>
+      <div class="mb-3">
+        <label for="productPrice" class="form-label">Product Price</label>
+        <input type="text" class="form-control" id="productPrice" name="price" value="<%= product.getPrice() %>">
+      </div>
+      <div class="mb-3">
+        <label for="productCategory" class="form-label">Product Category</label>
+        <input type="text" class="form-control" id="productCategory" name="category" value="<%= product.getCategory() %>">
+      </div>
+      <div class="mb-3">
+        <label for="productCategory" class="form-label">Image Link</label>
+        <input type="text" class="form-control" id="productCategory" name="image_link" value="<%= product.getImageLink() %>">
+      </div>
+      <button type="submit" class="btn btn-primary d-block mx-auto">Save</button> <!-- Center the button -->
+    </form>
+  </div>
 </div>
 </body>
 </html>
