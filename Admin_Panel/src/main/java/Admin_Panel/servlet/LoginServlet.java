@@ -40,8 +40,7 @@ public class LoginServlet extends HttpServlet {
 					request.getSession().setAttribute("auth", admin);
 					response.sendRedirect("addNewProducts.jsp");
 				}else {
-					out.print("admin login failed");
-				}
+					response.sendRedirect("adminLogin.jsp");				}
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				
