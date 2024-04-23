@@ -17,7 +17,40 @@ if(auth !=null){
 <title>Admin Login</title>
 </head>
 <body>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Admin Panel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+      <%
+      if(auth != null){
+      %>
+        <li class="nav-item">
+          <a class="nav-link active" href="addNewProducts.jsp">Add New Products</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="userManagement.jsp">User Management</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="productManagement.jsp">Product Management</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="log-out">Log Out</a>
+        </li>
+        <%}else{ %>
+         <li class="nav-item">
+          <a class="nav-link" href="adminLogin.jsp">Login</a>
+        </li>
+       <%} %> 
+     
+      </ul>
+    </div>
+  </div>
+  </nav>
 <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">

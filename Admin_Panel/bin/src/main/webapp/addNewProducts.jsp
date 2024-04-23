@@ -26,7 +26,9 @@ if(auth !=null){
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-      
+      <%
+      if(auth != null){
+      %>
         <li class="nav-item">
           <a class="nav-link active" href="adminLogin.jsp">Add New Products</a>
         </li>
@@ -39,7 +41,11 @@ if(auth !=null){
         <li class="nav-item">
           <a class="nav-link" href="log-out">Log Out</a>
         </li>
-       
+        <%}else{ %>
+         <li class="nav-item">
+          <a class="nav-link" href="adminLogin.jsp">Login</a>
+        </li>
+       <%} %> 
      
       </ul>
     </div>
