@@ -42,6 +42,13 @@ if(auth !=null){
     transform: scale(1.1);
 }
 
+  .nav-link:hover {
+    color: #007bff !important;}
+   .active {
+    color: #007bff !important;
+   }
+  }
+
 </style>
 </head>
 <body>
@@ -53,16 +60,14 @@ if(auth !=null){
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-      <%
-      if(auth !=null){
-      %>
+      
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="addNewProducts.jsp">Add New Products</a>
         </li>
       
        
         <li class="nav-item">
-          <a class="nav-link" href="userManagement.jsp">User Management</a>
+          <a class="nav-link active" href="userManagement.jsp">User Management</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="productManagement.jsp">Product Management</a>
@@ -70,11 +75,7 @@ if(auth !=null){
         <li class="nav-item">
           <a class="nav-link" href="log-out">Log Out</a>
         </li>
-        <%}else{ %>
-         <li class="nav-item">
-          <a class="nav-link" href="adminLogin.jsp">Login</a>
-        </li>
-       <%} %> 
+        
       </ul>
     </div>
   </div>

@@ -48,6 +48,7 @@ if(auth !=null){
     color: #007bff !important;
    }
   }
+  
 
 </style>
 </head>
@@ -72,16 +73,24 @@ if(auth !=null){
         <li class="nav-item">
           <a class="nav-link" href="productManagement.jsp">Product Management</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="log-out">Log Out</a>
-        </li>
+      
         
+      </ul>
+    </div>
+     <div class="navbar-nav ml-auto">
+      <ul class="navbar-nav">
+        <!-- Move the 'go back' link to the right -->
+        
+        <!-- Move the 'Log Out' link to the right -->
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="log-out">Log Out</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container-fluid bg-dark text-light py-5">
+<div class="container-fluid bg-dark text-light py-5 vh-100">
     <div class="container">
         <h2 class="mb-4 row justify-content-center">ADMIN USER MANAGEMENT </h2> 
         <table class="table table-striped custom-table">

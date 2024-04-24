@@ -15,6 +15,9 @@ if(auth !=null){
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
 <link rel="stylesheet" href="css/adminLogin.css">
 <title>Admin Login</title>
+<style>
+.gradient-custom{background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)) ;}
+</style>
 </head>
 <body>
 

@@ -44,11 +44,19 @@ if(auth !=null){
         <li class="nav-item">
           <a class="nav-link" href="productManagement.jsp">Product Management</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="log-out">Log Out</a>
-        </li>
+        
        
      
+      </ul>
+    </div>
+     <div class="navbar-nav ml-auto">
+      <ul class="navbar-nav">
+        <!-- Move the 'go back' link to the right -->
+        
+        <!-- Move the 'Log Out' link to the right -->
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="log-out">Log Out</a>
+        </li>
       </ul>
     </div>
   </div>

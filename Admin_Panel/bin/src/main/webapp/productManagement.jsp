@@ -24,6 +24,15 @@ if(auth !=null){
         height: 100px;
         object-fit: cover;
       }
+      
+    
+  .nav-link:hover {
+    color: #007bff !important;}
+   .active {
+    color: #007bff !important;
+   }
+  }
+
     </style>
 </head>
 <body>
@@ -35,9 +44,7 @@ if(auth !=null){
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-      <%
-      if(auth != null){
-      %>
+      
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="addNewProducts.jsp">Add New Products</a>
         </li>
@@ -47,111 +54,56 @@ if(auth !=null){
           <a class="nav-link" href="userManagement.jsp">User Management</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="productManagement.jsp">Product Management</a>
+          <a class="nav-link active" href="productManagement.jsp">Product Management</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="log-out">Log Out</a>
         </li>
-        <%}else{ %>
-         <li class="nav-item">
-          <a class="nav-link" href="adminLogin.jsp">Login</a>
-        </li>
-       <%} %> 
         
       </ul>
     </div>
   </div>
 </nav>
 <div class="container mt-5">
-      <h2>Product List</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Product ID</th>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>
-              <img
-                src="https://mir-s3-cdn-cf.behance.net/projects/404/90d873190593687.Y3JvcCwzODM1LDMwMDAsODUsMA.jpg"
-                alt="Product Image"
-                class="product-image"
-              />
-            </td>
-            <td>Product A</td>
-            <td>$10.00</td>
-            <td>Category A</td>
-            <td>
-              <button type="button" class="btn btn-warning">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>
-              <img
-                src="https://i.ytimg.com/vi/cyv-RYl7nHA/maxresdefault.jpg"
-                alt="Product Image"
-                class="product-image"
-              />
-            </td>
-            <td>Product B</td>
-            <td>$15.00</td>
-            <td>Category B</td>
-            <td>
-              <button type="button" class="btn btn-warning">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
+  <h2>Product List</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@ page import="productManagement.model.Product" %>
+      <%@ page import="java.util.List" %>
+      <%@ page import="productManagement.dao.ProductDAO" %>
+      
+      <% 
+        ProductDAO productDAO = new ProductDAO();
+        List<Product> productList = productDAO.selectAllProducts();
+        for (Product product : productList) {
+      %>
+      <tr>
+        <td><%= product.getId() %></td>
+        <td><img src="<%= product.getImageLink() %>" alt="Product Image" class="product-image"></td>
+        <td><%= product.getName() %></td>
+        <td>$<%= product.getPrice() %></td>
+        <td><%= product.getCategory() %></td>
+        <td>
+        <a href="edit?id=<%= product.getId() %>" class="btn btn-warning">Edit</a>
+        <a href="delete?id=<%= product.getId() %>" class="btn btn-danger">Delete</a>
         
-                <td><img src="https://media.istockphoto.com/id/650233226/photo/military-style-watch.jpg?s=612x612&w=0&k=20&c=PknuHX2Dh0SN2JTKF60Ftxowdiwoudc_zTu9Vd2UD-w=" alt="Product Image" class="product-image"></td>
-            
-            <td>Product C</td>
-            <td>$20.00</td>
-            <td>Category A</td>
-            <td>
-              <button type="button" class="btn btn-warning">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            
-                <td><img src="https://lk-live-21.slatic.net/kf/S972caa08aefd44478486cc7619c86755j.jpg" alt="Product Image" class="product-image"></td>
         
-            <td>Product D</td>
-            <td>$25.00</td>
-            <td>Category B</td>
-            <td>
-              <button type="button" class="btn btn-warning">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            
-                <td><img src="https://m.media-amazon.com/images/I/615flyfwK3L.jpg" alt="Product Image" class="product-image"></td>
-            
-            <td>Product E</td>
-            <td>$30.00</td>
-            <td>Category A</td>
-            <td>
-              <button type="button" class="btn btn-warning">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
 
 
 
