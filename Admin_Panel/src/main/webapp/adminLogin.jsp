@@ -48,7 +48,16 @@ if(auth !=null){
 
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
               </form>
-
+                 
+              <%
+            String errorMessage = "";
+            String errorParam = request.getParameter("error");
+            if (errorParam != null && errorParam.equals("1")) {
+                errorMessage = "Admin login failed. Please check your credentials.";
+            }
+            %>
+              <div style="color: red;"> <%= errorMessage %></div>
+              
             </div>
 
           </div>
@@ -65,9 +74,10 @@ if(auth !=null){
     event.preventDefault();
 
     // Redirect to adminMain.jsp page
-    window.location.href = "LoginServlet.java";
+   this.submit();
   });
 </script>
+
 
 </body>
 </html>
