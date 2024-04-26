@@ -13,7 +13,7 @@ import productManagement.model.Product;
 public class ProductDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/products?useSSL=false";
 	private String jdbcUsername = "root";
-	private String jdbcPassword = "12345678";
+	private String jdbcPassword = "chanuka1111";
 
 	private static final String INSERT_PRODUCT_SQL = "INSERT INTO products"
 			+ "  (name, image_link, price, category) VALUES " + " (?, ?, ?, ?);";
@@ -37,18 +37,18 @@ public class ProductDAO {
 		return connection;
 	}
 
-	public void insertProduct(Product product) throws SQLException {
-		try (Connection connection = getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCT_SQL)) {
-			preparedStatement.setString(1, product.getName());
-			preparedStatement.setString(2, product.getImageLink());
-			preparedStatement.setInt(3, product.getPrice());
-			preparedStatement.setString(4, product.getCategory());
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			printSQLException(e);
-		}
-	}
+    public void insertProduct(Product product) throws SQLException {
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCT_SQL)) {
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getImageLink());
+            preparedStatement.setInt(3, product.getPrice());
+            preparedStatement.setString(4, product.getCategory());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
 
 	public Product selectProduct(int id) {
 		Product product = null;

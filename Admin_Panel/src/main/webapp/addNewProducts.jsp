@@ -64,32 +64,37 @@ if(auth !=null){
   
 <div class="container mt-5">
   <h2>Add New Product</h2>
-  <form action="addProductServlet" method="post" enctype="multipart/form-data">
+ <form action="insert" method="post" >
     <div class="mb-3">
-  	  <label for="productImageLink" class="form-label">Enter Image Link</label>
-      <input type="text" class="form-control" id="productImageLink" name="productImageLink" placeholder="https://example.com/image.jpg">
-	</div>
-    <div class="mb-3">
-      <label for="productName" class="form-label">Product Name</label>
-      <input type="text" class="form-control" id="productName" name="productName" required>
+        <label for="productImageLink" class="form-label">Enter Image Link</label>
+        <input type="text" class="form-control" id="productImageLink" name="image_link" placeholder="https://example.com/image.jpg">
     </div>
     <div class="mb-3">
-      <label for="productPrice" class="form-label">Price ($)</label>
-      <input type="number" class="form-control" id="productPrice" name="productPrice" min="0" step="0.01" required>
+        <label for="productName" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="productName" name="name" required>
     </div>
     <div class="mb-3">
-      <label for="productCategory" class="form-label">Category</label>
-      <select class="form-select" id="productCategory" name="productCategory" required>
-        <option value="">Select Category</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Clothing">Clothing</option>
-        <option value="Books">Books</option>
-        <!-- Add more options as needed -->
-      </select>
+        <label for="productPrice" class="form-label">Price ($)</label>
+        <input type="number" class="form-control" id="productPrice" name="price" min="0" step="0.01" required>
+    </div>
+    <div class="mb-3">
+        <label for="productCategory" class="form-label">Category</label>
+        <select class="form-select" id="productCategory" name="category" required>
+            <option value="">Select Category</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Books">Books</option>
+            <option value="Foods">Foods</option>
+            <option value="Vehicles">Vehicles</option>
+            <!-- Add more options as needed -->
+        </select>
     </div>
     <button type="submit" class="btn btn-primary">Add Product</button>
-  </form>
+</form>
+
+
 </div>
+
 
 </body>
 </html>

@@ -18,10 +18,10 @@ import com.xadmin.usermanagement.dao.UserDao;
 import javax.servlet.RequestDispatcher;
 
 
-@WebServlet("/")
+@WebServlet("/users")
 public class UserServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-     private UserDao userDao;  
+    private static final long serialVersionUID = 1L;
+    private UserDao userDao;  
 
    
 	public void init() throws ServletException {
