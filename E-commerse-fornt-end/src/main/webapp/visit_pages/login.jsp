@@ -30,7 +30,7 @@
 					</div>
 
 					<div>
-						Haven't an account? <a href="....put the register page here.....">
+						Haven't an account? <a href="register.jsp">
 							Register here.</a> <!-- link with Register page -->
 					</div>
 
