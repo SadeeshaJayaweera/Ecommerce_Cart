@@ -2,6 +2,7 @@ package productManagement.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,7 +34,12 @@ public class ProductServlet extends HttpServlet {
 
 		try {
 			switch (action) {
-
+			case "/new":
+				showNewForm(request, response);
+				break;
+			case "/insert":
+				insertProduct(request, response);
+				break;
 			case "/delete":
 				deleteProduct(request, response);
 				break;
@@ -49,6 +55,20 @@ public class ProductServlet extends HttpServlet {
 		}
 	}
 
+	private void listProduct(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		List<Product> listProduct = productDAO.selectAllProducts();
+		request.setAttribute("listProduct", listProduct);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("productManagement.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("add-product.jsp");
+		dispatcher.forward(request, response);
+	}
+
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -56,6 +76,26 @@ public class ProductServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ProductForm.jsp");
 		request.setAttribute("product", existingProduct);
 		dispatcher.forward(request, response);
+	}
+
+	private void insertProduct(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+		String name = request.getParameter("name");
+		String imageLink = request.getParameter("image_link");
+
+		// Ensure price is not null or empty before parsing
+		String priceParam = request.getParameter("price");
+		int price = 0; // Default value if priceParam is null or empty
+
+		if (priceParam != null && !priceParam.isEmpty()) {
+			price = Integer.parseInt(priceParam);
+		}
+
+		String category = request.getParameter("category");
+
+		Product newProduct = new Product(name, imageLink, price, category);
+		productDAO.insertProduct(newProduct);
+		response.sendRedirect("productManagement.jsp");
 	}
 
 	private void updateProduct(HttpServletRequest request, HttpServletResponse response)

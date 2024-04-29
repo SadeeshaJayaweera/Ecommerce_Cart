@@ -1,6 +1,9 @@
 <%@page import="Admin_Panel.model.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.List" %>
+<%@ page import="com.xadmin.usermanagement.bean.User" %>
+<%@ page import="com.xadmin.usermanagement.dao.UserDao" %>
 <%
 Admin auth = (Admin) request.getSession().getAttribute("auth");
 if(auth !=null){
@@ -16,33 +19,34 @@ if(auth !=null){
 <link rel="stylesheet" type="text/css" href="css/adminMain.css">
 <title>AddNewProducts</title>
 <style>
-    /* Custom CSS for admin user management table */
+body {
+        
+        background-color: #f4f4f4;
+    }
+.table {
+        background-color: #fff;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    }
 
-.custom-table {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* White background for the table */
-}
+    .table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
 
-.custom-table th {
-    font-weight: 600;
-    background-color: #f8f9fa; /* Light gray background for table header */
-}
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
 
-.custom-table td, .custom-table th {
-    vertical-align: middle !important;
-}
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
 
-.custom-table .btn {
-    transition: all 0.3s ease;
-}
-
-.custom-table .btn:hover {
-    transform: scale(1.1);
-}
-
-  .nav-link:hover {
+    .btn-danger:focus {
+        box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+    }
+    .nav-link:hover {
     color: #007bff !important;}
    .active {
     color: #007bff !important;
@@ -90,53 +94,36 @@ if(auth !=null){
   </div>
 </nav>
 
-<div class="container-fluid bg-dark text-light py-5 vh-100">
-    <div class="container">
-        <h2 class="mb-4 row justify-content-center">ADMIN USER MANAGEMENT </h2> 
-        <table class="table table-striped custom-table">
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td><button class="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
-                <!-- Add more rows for other users -->
-            </tbody>
-        </table>
-    </div>
+<div class="container my-5">
+    <h2 class="text-center mb-4">Admin User Management</h2> 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+            UserDao userDao = new UserDao();
+            List<User> userList = userDao.selectAllUsers();
+            for (User user : userList) {
+            %>
+            <tr>
+                <td><%= user.getId() %></td>
+                <td><%= user.getName() %></td>
+                <td><%= user.getEmail() %></td>
+                <td>
+                    <a href="users/deleteUser?id=<%= user.getId() %>" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            <% 
+            }
+            %>
+        </tbody>
+    </table>
 </div>
 
 </body>
