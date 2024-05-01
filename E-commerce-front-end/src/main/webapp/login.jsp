@@ -1,4 +1,5 @@
 <%@ page import="user.model.*" %>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
@@ -8,6 +9,10 @@
 	if(auth!=null){
 		//request.setAttribute("auth", auth);
 		response.sendRedirect("index.jsp");
+	}
+	ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+	if (cart_list != null) {
+		request.setAttribute("cart_list", cart_list);
 	}
 	%>
 	
@@ -47,7 +52,7 @@
 					</div>
 
 					<div>
-						Haven't an account? <a href="....put the register page here.....">
+						Haven't an account? <a href="register.jsp">
 							Register here.</a>
 						<!-- link with Register page -->
 					</div>
