@@ -1,4 +1,6 @@
 # E-Commerce Web Application 🛒
+<br>
+<img src="WebPreview.jpeg">
 
 This repository contains an E-Commerce web application developed as a group assignment for the second-year first-semester project. The application is built using Java Enterprise Edition technologies, including Servlets, JSP, JDBC, HTML, CSS, and Java.
 
