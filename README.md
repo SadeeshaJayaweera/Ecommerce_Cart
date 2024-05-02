@@ -21,6 +21,7 @@ This repository contains an E-Commerce web application developed as a group assi
 - Java Database Connectivity (JDBC) 🗃️
 - HTML 📝
 - CSS 🎨
+- MySql 🛒
 
 ## Getting Started 🏁
 
@@ -35,10 +36,7 @@ To get started with this project, follow these steps:
 
 ## Contributors 👥
 
-- [Contributor 1](link-to-profile) 👨‍💻
-- [Contributor 2](link-to-profile) 👩‍💻
-- [Contributor 3](link-to-profile) 👨‍💻
-- [Contributor 4](link-to-profile) 👩‍💻
+<img src="ContributionList.png">
 
 ## License 📄
 
