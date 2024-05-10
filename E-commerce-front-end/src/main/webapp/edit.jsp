@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.*" %>
+
+
+
 	
 <!DOCTYPE html>
 <html>
 <head>
+
 <%@include file="/includes/head.jsp"%>
 
 <meta charset="ISO-8859-1">
@@ -16,65 +21,43 @@
 </head>
 <body>
 
-	<div class="container">
-		<div class="card w-50 mx-auto my-5">
-			<div class="card-header text-center">Edit Your Profile</div>
-			<div class="card-body">
-				<form action="RegisterServlet" method="post">
-					<div class="form-group">
-						<label>First Name</label> <input class="form-control"
-							name="Login-name" type="text" placeholder="Enter Your First Name"
-							required>
-					</div>
-                                    <div class="form-group">
-						<label>Last Name</label> <input class="form-control"
-							name="Login-name" type="text" placeholder="Enter Your Last Name"
-							required>
-					</div>
-					<div class="form-group">
-						<label>Email Address</label> <input class="form-control"
-							name="Login-email" type="email" placeholder="Please Enter Your Email"
-							required>
-					</div>
-                                    <div>
-                                        Change Password
-                                        <input type="checkbox" id="abc" onclick="checkMe()" ><br><br>
-                                        <div id="msg" style="display: none;">
-                                            <div class="form-group">
-						<label>New Password</label> <input class="form-control"
-							name="new-pass" type="password" placeholder="Enter New Password">
-					</div>
-                                    <div class="form-group">
-						<label>Confirm New Password</label> <input class="form-control"
-							name="con-pass" type="password" placeholder="Confirm Password">
-					</div>
-                                        </div>
-                                    </div>
-					
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary">Save Changes</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<h1 align="center">Edit Profile</h1>
+                <table align="center" border="1" cellpadding="0" width="50%">
+               <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>password</th>
+               </tr>
+               <%
+                Connection con;
+	       		PreparedStatement pst;
+	       		ResultSet rs;
+	       		
+	       		Class.forName("com.mysql.cj.jdbc.Driver");
+	       		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ecommerce_cart", "root", "1234");
+	            String query = "select * from users";
+	            Statement st = con.createStatement();
+	            rs = st.executeQuery(query);
+	            
+	            while(rs.next())
+	            {
+	            	String id = rs.getString("id");
+	            
+               
+               %>
+               
+               
+               <tr>
+                <td><%=rs.getString("name") %></td>
+                <td><%=rs.getString("email") %></td>
+                <td><%=rs.getString("password") %></td>
+                <td><a href="update.jsp?id=<%=id %>">Edit</a></td>
                 
-                <script>
-                    function checkMe(){
-                        var cb = document.getElementById("abc");
-                        var text = document.getElementById("msg");
-                        if(cb.checked==true){
-                            text.style.display="block";
-                        }else{
-                            text.style.display="none";
-                        }
-                    }
-                </script>        
+               </tr>
+               <% } %>
+                </table>
+                <div align="center"><a href="index.jsp">Click Back</a></div>       
                 
 </body>
 </html>
